@@ -1,24 +1,34 @@
 # Today I Learned
 
+<br />
+
 ## 08.17.21
 
 ### ***github, codesandbox.io, w3schools***
 
-### ***HTML (Hyper Text Markup Language)*** : "웹페이지 표시 언어"
+***HTML (Hyper Text Markup Language)*** : "웹페이지 표시 언어"
 
-* **"client server model"**: client - request -> server - response -> client (클라이언트와 서버 1:1 연결, 논리적구성)
-* **"front-end"**: client에서 보여지는 부분
-  * web browser**에 초점 - 서버에서 데이터를 받고, 소스코드 번역
-* 해석/번역방식: 컴파일링, 인터프리팅, 렌더링
-  * **"compiling"**: C, C++, C#, JAVA, Python - 대표적인 compiler 언어들
-  * **"interpreting"**: 
-  * **"rendering"**: 모델을 실제처럼 보이도록 - **"HTML, CSS, JavaScript"**
+> **client server model**: client - request -> server - response -> client (클라이언트와 서버 1:1 연결, 논리적구성)
 
-### ***CSS (Cascading Style Sheets)*** : "Cascade"-폭포, 적용순서가 위에서 아래로 차례대로 적용이 되지만, 맨 밑에 있는 내용이 최종반영된다.
+> **front-end**: client에서 보여지는 부분
 
-* "공통화 작업" - 최대한 코드길이 줄이기
+>  **web browser**에 초점 - 서버에서 데이터를 받고, 소스코드 번역
 
+>  **해석/번역방식**: 컴파일링, 인터프리팅, 렌더링
+>
+> - **compiling**: C, C++, C#, JAVA, Python - 대표적인 compiler 언어들
+> - **interpreting**: 
+> - **rendering**: 모델을 실제처럼 보이도록 - **"HTML, CSS, JavaScript"**
 
+***CSS (Cascading Style Sheets)***
+
+> **Cascade**: "폭포"
+>
+> - 적용순서가 위에서 아래로 차례대로 적용이 되지만, 맨 밑에 있는 내용이 최종반영된다.
+
+> **공통화 작업** - 최대한 코드길이 줄이기
+
+<br />
 
 ## 08.18.21
 
