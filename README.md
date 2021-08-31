@@ -8,6 +8,9 @@
 
 ***HTML (Hyper Text Markup Language)*** : "웹페이지 표시 언어"
 
+- 웹페이지 구조 표시
+- 웹페이지 콘텐츠 표시
+
 > **client server model**: client - request -> server - response -> client (클라이언트와 서버 1:1 연결, 논리적구성)
 
 > **front-end**: client에서 보여지는 부분
@@ -37,16 +40,19 @@
 * create sandbox -> static
 * IDE
 
+***HTML***
 
+>  **HTML Elements**(요소)
 
-* **HTML Elements**(요소)
-* **HTML Attributes**(속성): 태그에 관련된 추가정보를 가지고 있는 것
-  * All HTML elements can have **attributes**
-  * Attributes provide **additional information** about elements
-  * Attributes are always specified in **the start tag**
-  * Attributes usually come in name/value pairs like: **name="value"**
-* react.js는 xml을 따르기 때문에 문법이 엄격함 
-  	*  `<hr>` -> `<hr />`:  empty elements는 이와 같이 표시
+> **HTML Attributes**(속성): 태그에 관련된 추가정보를 가지고 있는 것
+>
+> - All HTML elements can have **attributes**
+> - Attributes provide **additional information** about elements
+> - Attributes are always specified in **the start tag**
+> - Attributes usually come in name/value pairs like: **name="value"**
+> - react.js는 xml을 따르기 때문에 문법이 엄격함 
+>   	*  `<hr>` -> `<hr />`:  empty elements는 이와 같이 표시
+
  * **HTML Paragraphs**
     * p태그 사용시, 공백처리는 따로 공백태그를 사용하여 처리
        * `<br>`
@@ -557,6 +563,193 @@
 
 
 
+## 08.30.21
+
+***Form Elements - Input, Select***
+
+> **Input types**
+>
+> - input tag에는 기본적으로 padding이 존재
+> - `width: 100%` -> 부모요소에 너비 꽉 채우기
+> - `box-sizing: border-box` ->  
+
+> **addEventListener("change/input")**
+>
+> - change event: focus가 빠져야 작동
+> - input event: 실시간으로 입력할때마다 작동
+> - `addEventListener`: "입력된 값을 감지" -> "해당하는 동작 수행"
+> - 매개변수를 사용하여 입력된 값(변수)을 바로 함수에 사용
+> - `varName.currentTarget.value`: 입력한 값
+> - `:focus` -> 마우스 커서 이동 시("focus 이동")  수행
+
+> **Select**
+>
+> - `<option>`태그와 같이 사용. option에 `value=""` attribute을 추가하여 option값을 사용.
+> - 연도 / 월 / 일 만들기
+>   - 동적생성 -> `createElement()`,  `createTextNode()`, `appendChild()`
+>   - for loop - DOM - 자식요소에 text 추가/생성 - attribute 추가/생성 - 부모요소에 text 추가/생성
+>   - "일(날짜)"의 경우, 연도에 따라, 월에 따라서 다름 -> "연도, 월과 연결"
+>     - `addEvenetListener` 활용
+>   - 처음에 연도, 월 선택하면 일이 추가가 되는데, 다른 연도와 월로 바꿀 경우, `appendChild()`이기 때문에 전에 선택한 연도, 월에 해당하는 일이 그대로 남아있음.
+>     - `innerHTML`을 활용하여 제거/변경
+>     - 첫번째껀 그대로 두고, 날짜만 바꿀 순 없을까..? -> "퍼포먼스 향상
+
+
+
+***Animation***
+
+> **sliding**
+>
+> - 오른쪽에서 왼쪽으로 - 오른쪽에서 화면에 들어오고 화면에 있던 미디어 왼쪽으로 나감 - 왼쪽에서 점프해서 다시 반복
+>   - => 왼쪽으로 나가면 오른쪽으로 점프해서 들어오는 방식
+> - "이동" => "좌표의 이동"
+>   - CSS `position: aboluste` 사용
+>   - 좌표는 부모요소를 기준으로
+>     - 부모요소를 `position: relative`, 자식요소를 `position: absolute`로 설정
+>     - 부모요소를 relative로 설정하지 않으면, 자식요소는 body 태그를 기준으로 움직임
+
+> **advance_06.html**
+>
+> - 부모요소와 자식요소의 position을 설정하여 3장의 이미지를 겹쳐서 렌더링
+>
+>   - 겹쳐질 경우, 가장 밑 이미지가 맨 위에 보여짐
+>   - 화면에 보여질 이미지를 제외하고는 이미지 모두 딱 붙어서 슬라이드
+>   - 자식요소를 %로 쓸 경우, 부모요소를 px로 설정 필요
+>
+> - 애니메이션은 CSS로, 동작(롤링)은 JavaScript로
+>
+>   - CSS
+>
+>     - `left`: 100%에서 0으로 이동
+>
+>     - CSS로 상태를 3개로 나눔
+>
+>       - 나가기, 들어오기, 점프
+>
+>         - 점프는 굳이 필요없음
+>
+>           |          | state I    | state II   | state III  |
+>           | -------- | ---------- | ---------- | ---------- |
+>           | image_01 | in >>> out | out >>> -  | - >>> in   |
+>           | image_02 | in         | in >>> out | out  >>> - |
+>           | image_03 | -          | - >>> in   | in >>> out |
+>
+>   - JavaScript
+>
+>     - `setInterval()`: 무한반복(for loop는 시간의 개념 X)
+>     - CSS에서의 시간은 애니메이션이 진행되는 시간. 즉, 이동하는 시간.
+>     - JavaScript에서의 시간은 반복주기간격
+>     - in, out, '' 에 인덱스넘버 0, 1, 2가 번갈아가면서 롤링
+>     - 클래스를 각 인덱스에 추가해줌. 동시에, 기존 클래스를 제거해야 하는 클래스도 있음
+>       - "모든 클래스를 다 먼저 지우고, 붙이고 싶은 인덱스번호에 붙인다."
+
+> **play / pause**
+>
+> - play(default)
+>   - 함수 선언
+> - pause
+>   - `clearInterval()`: 매개변수 사용
+>     - `setInterval()`도 값이 나옴. 그 값을 매개변수로 사용하면 pause
+> - play버튼을 여러번 누르면 이상하게 작동함 -> 처리 필요
+
+
+
+***React***
+
+> **Node.js** 기반
+>
+> - 설치 / 버전확인
+>   - terminal에서 `node --version`
+> - npm 버전 확인
+> - yarn 설치 / 버전 확인
+
+> **Visual Studio Code**
+
+
+
+## 08.31.21
+
+***Visual Studio Code***
+
+> **React 프로젝트 설치**
+>
+> - npx create-react-app [폴더이름]
+> - 폴더이름: '.' - 현재폴더
+> - 터미널에서 `yarn start` 명령하면 react 웹 브라우저 생성
+> - src -> App.js 파일에서 `header`에 `Hello World`
+> - 기본 폴더: "public" -> 기본 파일: "index.html"
+> - public폴더가 보여지는 부분,  src폴더가 작업하는 공간(실제 개발 공간)
+>   - -> 흐름: 최종적으로 src폴더의  App.js로 모이고 그 내용이 index.js로 넘어가고 다시 그 넘어간 내용들이 public폴더의 index.html로 넘어감
+
+> **React 특징**
+>
+> 화면에 컨텐츠가 어떻게 표시될 것인가
+>
+> - Virtual DOM
+>   - 실제 DOM에 접근하는 것이 아닌 실제 DOM과 똑같은 DOM을 복제한 메모리상의 DOM에 접근(변수에 DOM을 저장하는 것과 비슷한 맥락). Virtual DOM과 데이터를 주고 받고 작업이 완료되면 실제 DOM과 비교. 바뀐 내용만 실제 DOM에서 변경 후 반영. Virtual DOM을 이용하는 것이 과정이 복잡할지라도 속도는 빠름(퍼포먼스).
+> - SPA(Single Page Application)
+>   - Traditional Web Application은 페이지를 물리적으로 나눠서 만듬 - 새로고침하면 여러 페이지들이 동시에 리프레시
+>     - FrontEnd에서 요청하면 BackEnd에서 받아서 내용 변경
+>   - SPA는 공통된 부분을 제외한 나머지 부분 내용을 바꿔주는 방식 - 물리적인 페이지가 하나 있고 내용만 바뀜 => "Virtual DOM"
+>     - 백엔드로부터 API나 data를 받아온 상태에서 virtual DOM을 활용하여 웹페이지 표시
+> - Component: 코드 조각 단위
+>   - 
+
+
+
+***Exercise***
+
+> - 웬만하면 component 파일 이름은 대문자로 시작하도록
+> - component(function/class)이름은 파일이름과 동일하게
+> - 마지막에 `export default`
+> - App.js에 태그 쓰듯이 `< >`(꺽은 괄호)안에 새로 만든 component 파일이름을 입력하면 자동으로 위에 `import` 코드 생성
+
+
+
+> **JSX**
+>
+> - JavaScript Syntax Extension: 자바스크립트 구문 확장
+> - `return()`안에는 하나의 영역으로 그룹핑되어 있어야 한다. 정 나누고 싶다면, `<react.Fragment>`사용. -> 축약표현은  `<> </>`
+> - 변수 사용 가능 - 중괄호 `{}` 사용
+> - class를 사용할때는  `className=""`으로 사용
+
+
+
+> **Properties**: component와 component 사이에서 값을 전달할때 사용하는 객체
+>
+> - 값을 호출 -> attribute 형태로
+> - 매개변수로 전달받음
+> - 
+
+
+
+
+
+> **Condition**
+>
+> - 
+
+
+
+> **todo app**
+>
+> - https://dev.to/hariramjp777/todo-app-using-html-css-and-js-local-storage-design-html-and-css-1m0j
+> - HTML - 전반적인 구조 만들기
+>   - header - 제목, input
+>   - main
+>   - footer
+> - CSS
+>   - reset
+>   - 
+>
+> 
+
+
+
+
+
+
+
 
 
 
@@ -621,6 +814,11 @@
 
 
 
+> 08.31.21
+>
+> - SPA를 구현하는 기술로 react.js, ajax, vue.js 등이 있다.
+> - 
+
 
 
 
@@ -646,3 +844,15 @@
 
 
 ***강사님 코드샌드박스 주소: https://codesandbox.io/s/static-3xb0r***
+
+
+
+
+
+### Tip
+
+> **Programming** => Computational Think
+>
+> - Algorithm
+> - Logic
+
