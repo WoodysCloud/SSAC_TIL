@@ -101,13 +101,25 @@
 >
 > - Block Elements: 다른 블럭요소, 인라인 요소 ,contents 모두 포함 가능
 > - Inline Elements: 다른 인라인 요소, contents 포함 가능. 블럭 요소는 포함 불가.
-> - 
+>   - 예외: `<a>` - 인라인 요소지만 블럭요소도 포함 가능
+
+> **HTML Entities**
+>
+> - HTML 마크업 용도로 fix된 기호는 대체 코드 사용
+
+> **HTML id, class**
 
 
 
+***CSS***: Cascading Style Sheets
 
+> **CSS Syntax**
 
+> **CSS Selector**
 
+<br />
+
+<br />
 
 ## 08.23.21
 
