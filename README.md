@@ -33,6 +33,8 @@
 
 <br />
 
+<br />
+
 ## 08.18.21
 
 ### ***codesandbox***
@@ -43,6 +45,8 @@
 ***HTML***
 
 >  **HTML Elements**(요소)
+>
+>  - Ancestor, Parent, Child, Descendant
 
 > **HTML Attributes**(속성): 태그에 관련된 추가정보를 가지고 있는 것
 >
@@ -53,44 +57,51 @@
 > - react.js는 xml을 따르기 때문에 문법이 엄격함 
 >   	*  `<hr>` -> `<hr />`:  empty elements는 이와 같이 표시
 
- * **HTML Paragraphs**
-    * p태그 사용시, 공백처리는 따로 공백태그를 사용하여 처리
-       * `<br>`
-       * `&nbsp;`
- * **HTML Links**
+> **HTML Paragraphs**
+>
+> * p태그 사용시, 공백처리는 따로 공백태그를 사용하여 처리
+>   * `<br>`
+>   * `&nbsp;`
 
-* 루트 상대 경로: 예를 들어, SSAC 건물 지하, 1층, 2층 각 층에 한명씩 있다고 가정하자. 그들에게 모두 3층으로 오라고 한다면 일단 모두 정문으로 가라고 한다 -> "/" - `"/"html/html_filepaths.asp`
+>  **HTML Links**
+>
+> * 루트 상대 경로: 예를 들어, SSAC 건물 지하, 1층, 2층 각 층에 한명씩 있다고 가정하자. 그들에게 모두 3층으로 오라고 한다면 일단 모두 정문으로 가라고 한다 -> "/" - `"/"html/html_filepaths.asp`
+>
+> * id로 bookmark(책갈피)
 
-* id로 bookmark(책갈피)
+> **HTML Lists**
+>
+> - 'u'nordered 'l'ist: `<ul>`
+> - 'o'rdered 'l'ist: `<ol>`
+> - 항목표시는 모두 'l'ist 'i'tems: `<li></li>`
 
+>  **HTML Media**
+>
+> * video
+>   * `controls` attribute: 재생버튼
+>   * `autoplay muted` attributes: 크롬의 경우 muted 속성이 있어야 autoplay 
+>   * `loop` attribute: 반복재생
+> * image
+>   * `alt` attribute: "alternative"
 
+<br />
 
-* **HTML Lists**
-  * 'u'nordered 'l'ist: `<ul>`
-  * 'o'rdered 'l'ist: `<ol>`
-  * 항목표시는 모두 'l'ist 'i'tems: `<li></li>`
-
-
-
-* **HTML Media**
-* video
-  * `controls` attribute: 재생버튼
-  * `autoplay muted` attributes: 크롬의 경우 muted 속성이 있어야 autoplay 
-  * `loop` attribute: 반복재생
-* image
-  * `alt` attribute: "alternative"
-
-
-
-
-
-
+<br />
 
 ## 08.19.21
 
-#### ***HTML Semantics***
+#### ***HTML*** 
 
-* **"Semantic"**: 의미의, 의미론적인
+>  **HTML Semantics**
+>
+> - "Semantic": 의미의, 의미론적인
+> - `<header>`, `<div>`, `<section>`, `<article>`, `<footer>`
+
+> **HTML Block & Inline**
+>
+> - Block Elements: 다른 블럭요소, 인라인 요소 ,contents 모두 포함 가능
+> - Inline Elements: 다른 인라인 요소, contents 포함 가능. 블럭 요소는 포함 불가.
+> - 
 
 
 
@@ -741,7 +752,199 @@
 > - CSS
 >   - reset
 >   - 
+
+
+
+## 09.01.21
+
+***stage, commit, push***
+
+> - **'+'**: stage
+> - **'체크모양'**: commit (w/ message)
+> - **'점3개'**: push
+> - VS code 창 밑에 파란줄: pull/push 상태
+
+> **node_modules**
 >
+> - 용량은 작지만, 파일량이 매우 많기 때문에 gitignore로 node_modules 제외한 나머지만 push
+
+
+
+***todo***
+
+> **margin: 0 auto;**: 가운데 정렬
+
+> **developer tools** - computed
+>
+> - 자세한 프론트엔드 설정값 볼 수 있음
+
+> **svg image file**: xml 형태로 되어있는 이미지 데이터 -> 이미지로 렌더링해줌
+>
+> - 데이터 수정 가능 => 색 변경: `style=fill:#000000`
+
+> **마우스 커서가 인풋창에 놓였을때 테두리가 없어지게**
+>
+> - `className:focus {outline: none;}`
+
+> **보통 기본 폰트 사이즈는 16px**
+
+> **`flex: 1`**: 공간을 자동으로 채워줌
+
+> **margin collapse**
+>
+> - 부모요소는 그대로, 자식요소만 부모요소 내에서 위치를 조금만 내리려 한다면?
+> - 자식요소한테 마진을 적용하면 부모요소도 같이 적용됨
+> - -> 부모요소 padding
+
+> **input창 너비**
+>
+> - `max-width`를 설정하면 반응형으로 적용
+> - `padding`설정해주면 브라우저 창을 줄여도 좌우 여백 생김
+
+> **checkbox**
+>
+> - 디자인적 요소는 적용불가
+
+> 폰트마다 기본적인 여백이 다름
+>
+> -  `line-height`를 맞춰도 폰트에 따라 위아래여백이 다를수 있음
+
+> footer를 페이지 하단으로
+>
+> - `position`활용
+
+***markup -> component***
+
+> **나누기**
+>
+> - header, main, footer
+> - 동적 생성 있는지 파악
+>   - header(A) => 1개
+>   - main - main(B), section1(C) > 추가되는 list(D), section2(E) => 4개
+>   - footer(F) => 1개
+> - 총 6개의 components
+> - class => className
+
+> **Header**
+>
+> - 그대로 복붙
+> - css는 적용이 안되므로 뼈대만 보임
+> - 경로를 바꾸지 않아도 사진이 보이는 이유는 모든 components의 렌더링은 결국 `index.html`(in public folder)로 되는 것이기 때문. 같은 폴더안에 존재
+
+> **Main**
+>
+> - TodoMain, TodoList는 껍데기만 만듬
+>   - TodoMain 태그 안에는 TodoList
+>   - TodoList 태그 안에는 TodoItem
+>   - => TodoMain과 TodoList는 props(children) 필요
+> - TodoItem
+
+> **Footer**
+>
+> - 마찬가지로 그대로 복붙
+
+> **CSS 적용**
+>
+> - `App.css`에 `style.css` 복붙하면 되지만 비추
+> -  css파일은 적을수록 좋다.
+>   - 클라이언트 < == request / response == > 서버
+>     - 100MB x 1file : 1MB x 100 files
+>       - 파일 하나가 훨씬 빠름 => "퍼포먼스가 좋다"
+>       - But, 코드가 길기 때문에 개발자들이겐 불편함
+>       - => 따로따로 작업해서 하나의 파일로 합침 = "component 개념"
+> - reset css의 경우는 전역으로 적용돼야 하기 때문에 module css방식이 아닌 일반적인 방식으로 App.css에 코딩하여 전역으로 적용
+> - 파일이름형식: `[filename].module.css`
+> - css파일의 이미지는 다른 폴더에 있기 때문에 따로 경로 설정 필요
+>   - 가장 쉬운 방법은 이미지를 css폴더로 이동
+>   - component파일에서 class를 import하는 것은 객체로 가져오는 것
+>     - 따라서, component파일에서 return으로 가져올 때 className을 객체의 속성 형식의 이름으로 설정
+>       - ex. `className={objectName.classNameInCss}`
+>     - 클래스 이름에'-'이 들어갈 경우, 인덱스 방식으로 스트링으로 클래스 지정
+>       - ex. `className={objectName.['className-inCss']}`
+
+
+
+## 09.02.21
+
+*** VS Code extenstion 설치***
+
+> - syntax error -> ESlint
+> - 코드모양 -> Prettier
+
+> **.prettierrc**
+>
+> - setting값 설정
+
+***Event 설정***
+
+> DOM에 접근할 필요 없음 => "JS내에서 어떻게 동작할하게 할 것인가"
+>
+> => 모두 변수에 저장
+>
+> - jsEvent, AppEvent component 만들고 index.js 수정
+> - 이벤트감지는 인라인형식과 유사
+> - JS 함수호출이므로 HTML처럼 `A="B"`가 아닌 `A={B}` 형식
+> - 함수는 작동하지만 업데이트된 변수값이 반영이 안됨 => "rerendering, 리렌더링" 필요 => "Hook"
+
+> **Hook** function
+>
+> - "상태"
+> - 구조 분해 할당: `const [변수이름, 함수이름] = useState(initialState);`
+> - 이벤트 안에 함수를 정의하고 함수를 정의할 때는 등식이 아닌 그냥 식을 사용
+> - `useState`: 변수값을 "상태"라고 생각
+> - `useRef`: DOM 접근
+
+> **Mapping**: 데이터 변환
+>
+> - 고유key값 설정 필요 => id
+
+> **useState**
+>
+> - 변수 선언: 구조 분해 할당 방식
+> - useState() 괄호 안에는 객체 방식, 고유key값(id)은 제외 => 자동으로 생성됨
+> - 기존데이터 설정 + 추가할 데이터 설정
+>   - 비어있는 데이터를 return
+>   - input 받아서 데이터 update
+
+> **흐름**
+>
+> - 보다 포괄적인 component가 다른 component에 데이터를 전달 
+> - 웹브라우저에 데이터 표시
+> - 웹브라우저에서 event발생
+> - event발생하면 포괄적 component에서 함수 수행
+> - 함수로 인하여 데이터 변경
+> - 다시 반복
+
+> **리액트 데이터 불변성**
+>
+> - 리액트 데이터 변경시 의도치 않은 변경을 막기 위해 사본을 만들어서 데이터 변경
+> - spread(전개) 연산자
+
+
+
+## 09.03.21
+
+***리렌더링 정리***
+
+> **map** 함수
+>
+> - 객체 데이터 동적 생성/제거/변경
+> - 기본객체수만큼 렌더링해줌 -> 반복문 필요없음
+> - 키 생성 필요 -> 컴포넌트 만들면서 생성
+> - 화면에 표시되는 것과 input값을 구분해야함
+>   - input값을 함수 안에 변수에 담음.
+>   - -> 변수에 담은 input값을 다시 return
+
+> **제거**
+>
+> - 불변성의 원리로 인하여, 원래 있던 것을 삭제하는 것이 아닌, 원래 있던 것에서 삭제할 것을 제외한 나머지를 다시 새로 만든다.
+
+> **key**
+>
+> - key값은 매개변수로 전달할 필요 X
+
+***FTP***
+
 > 
 
 
@@ -774,7 +977,13 @@
 
 
 
-## 추가내용
+## 
+
+
+
+
+
+
 
 
 
