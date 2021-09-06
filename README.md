@@ -127,6 +127,17 @@
 
 > html semantics, border shorthand property, inherit
 
+***CSS***
+
+> **Box Model**
+>
+> - width / height 기본 특성
+>   - Block Elements: width는 parent elements에 맞춰서 채워짐, height는 child elements에 맞춰짐
+>   - Inline Elements: width / height 적용되지 않음 => 레이아웃 구성 용도로 사용하지 않음
+> - 단위
+>   - px: px값으로 고정
+>   - %: parent elements를 기준으로 특정 비율로 설정
+
 ***layout 구성 = "박스 배치" (flexbox)***
 
 > **배치**: 세로방향 배치, 가로방향 배치
