@@ -208,3 +208,266 @@ for (let i = 0; i < moduleArr.length; i++) {
   - postman(client: 요청을 보내는 주체)으로 request + server(: 요청을 받는 주체)가 response => "통신"
   - url에 정보를 입력하여 통신 => "query"형식 (get method): 문자열로 정보를 요청
     - query 날리고 - 콜백함수로 정보 받아서 변수에 저장 - 요청한 변수, 저장된 변수를 object형식으로 응답 => get method
+
+
+
+
+
+## 09.07.21
+
+> ### review
+
+- JavaScript: 객체 기반의 스크립트 언어
+
+- ES6: ECMAScript - 표준 규격
+
+- 변수: var (function scope), let - 재할당, const - 상수처리 (안전)
+
+- 배열 선언
+
+  - `const array = new Array();`
+  - `const anything = [ ];`
+
+- 배열 요소 순회 - for문
+
+- 함수 선언
+
+  - `const func = function () {}`
+  - `const func = () => {}`
+
+- JSON (JavaScript Object Notation): 간결하고 경량화된 데이터. JS에서 객체를 만들 때 사용하는 표현식
+
+  - 객체 요소 접근: `json["key"]` /  `json.key`
+
+  - 객체 요소 순회:  `for (key in json) {console.log(key + ':' + json[key]);}`
+
+    - ```javascript
+      // 틀린 코드
+      for (key in obj) {
+        console.log(`key : ${obj.key}`); // key값에는 obj배열의 요소값
+      }
+      
+      // 수정
+      for (key in obj) {
+        console.log(`key : ${obj["key"]}`);
+      }
+      ```
+
+- Node.js: JavaScript Runtime - 자바스크립트 실행환경
+
+  - "비동기", "non-blocking I/O"
+  - 싱글 스레드: 스레드는 많지만 control할 수 있는 것은 1개 <-> 멀티 스레드는 안전하지만 비용문제
+  - **Node.js는 non-blocking 방식을 사용하는 이벤트 기반의 싱글 스레드, 비동기 방식**
+  - 대규모 프로젝트, 게임서버보다는 RESTful API, 채팅, Push 서버에 적합
+
+- Server
+
+  - 클라이언트: 요청을 보내는 주체
+  - 서버: 요청을 받고 응답을 보내는 주체 
+    - 서버가 서버에 요청을 보낼 수도 있음 - 요청을 보내는 서버가 클라이언트가 됨
+
+
+
+
+
+> ### 모듈
+
+- express - `module.exports = nameModule;`: 구버전 export
+- 모듈 가져오기: `const 모듈 = require(파일경로)
+- 실습
+  - 모듈
+    1. 문자열 중에 중복된 문자를 제거하는 함수. ex) ssac => sac
+    2. number값을 받았을 경우 홀수면 '홀수입니다.', 짝수면 '짝수입니다' + 2의 제곱형태
+  - main
+    - const moduleArr = [1, 2, apple, ssac, 5]
+
+
+
+
+
+
+
+> ### HTTP (Important)
+
+- HTTP Request (Client -> Server)
+  - Content-Type
+    - application/xml : XML 데이터
+    - **application/json** : json 객체 데이터 (주로 응답 보낼 때)
+    - **application/x-www-form-urlencoded** : html form data (주로 request 받을 때)
+    - **multipart/form-data** : xml 데이터 (사진, 데이터 전송 받을 때)
+    - text/plain : text 데이터
+    - text/html : html 데이터
+- HTTP Response (Server -> Client)
+  - Status Code: 1xx, 2xx(성공), 3xx(리다이렉팅), 4xx(요청 오류), 5xx(서버 오류) 등이 들어감
+    - ex) google.com/1231213213124 => 구글에게 다음과 같은 url을 get method로 request => "404. page not found."
+
+
+
+
+
+> ### Express
+
+: node를 위한 "빠르고 간결한" 웹 프레임워크
+
+- HTTP 요청에 대하 라우팅 및 미들웨어 기능 제공
+  - 라우팅: 서버 경로 제어, 통신 데이터를 보낼 경로 선택
+  - 미들 웨어: 부가적인 기능이나 처리를 제공하는 목적. 요청 사이사이에 들어가는것(?)
+  - 설치: `npm install -g express` => `sudo` 필요할 수도
+- express-generator
+  - Node.js +  Express구조의 뼈대를 만들어 줌
+  - 프로젝트 생성 시 폴더 및 파일들을 자동으로 생성
+- 프로젝트 구조
+  - **/bin/www** 
+    - 서버를 실행하는 스크립트
+    - 프로젝트 돌아가는 포트번호 바꿀 수 있음
+  - **/public**
+    - 외부에서 접근 가능한 파일 모아둠
+    - 리소스들이 올라감
+    - 딱히 건드릴 일 없음
+  - **/routes**
+    - 페이지 라우팅과 관련된 파일 저장(주소별 라우터들을 모아둠)
+    - url 별로 실행되는 실제 서버 로직
+    - index.js 파일로 라우팅 관리
+  - **/views**
+    - jade, ejs파일들 모아둠
+  - **/app.js**
+    - 핵심적인 서버 역할 (프로젝트의 중심)
+    - 미들웨어 관리
+    - 라우팅으 시작점
+  - **/package.json**
+    - npm의 의존성 파일
+    - 현재 프로젝트에 사용된 모듈을 설치하는데 필요한 내용을 담음
+- /route 파일 기본 구조
+  - /routes/index.js 파일 참고
+- request 처리
+  - method는 GET, POST, PUT, DELETE
+  - request parameter
+    - `req.query`: url에서의 query문자열
+      - ex) url/?str=HelloNode => req.query.str = "HelloNode"
+    - `req.params`: url에서 변수로 넘어온 것
+      - ex) url/:idx로 지정후 url/1024 접속 => req.params.idx = 1024
+    - `req.body`: body로 넘어온 값
+    - `req.file`: 파일을 전송받았을 때
+- response 처리
+  - `res.status()`
+  - `res.send()`
+- "미들웨어"
+  - 다음 것을 수행하기 전 중간에 거치는 작업
+  - `next()`: 코드 실행 후 그 다음 해당되는 경로, 라우트로 이동
+  - app.js에 코딩하여 반복되는 코드/작업을 피함
+- "모듈화" -> 기능성 있게, 짧게
+  - "동일한 상위폴더경로에 다른 라우트들 접근"
+  - routes 폴더에 모듈폴더/파일 생성
+  - routes 최상위 폴더에 있는 index.js파일에서 app.js파일처럼 `use` method 이용하여 미들웨어 형태로 
+
+
+
+> ### 라우팅 - 파일 접근 과정
+
+- 라우팅 시 파일 접근 과정
+  1. app.js에서 라우팅 정보 찾음
+     1. 라우팅 미들웨어는 첫 번째 인자로 주소를 받음
+     2. 
+  2. routes/index.js로 접근 => 
+
+
+
+
+
+> ### POST
+
+- postman에서 method post로 바꾸고, body에 raw - json으로 데이터 입력
+- 요청 보내고, `console.log(req.body)`하면 객체로 터미널에 데이터 나타남
+  - => "통신 완료"
+- key값을 property로 value를 뽑아냄
+- 변수에 데이터 저장해서 `res.json` 객체에 넣어서 활용 가능
+- "변수 저장하기가 불편" - 비효율적 => "한번에 변수에 담을 수 없을까?"
+  - "비구조화 할당" - key, value 값 개수 맞춰줘야 함
+
+
+
+> ### DELETE (params 접근)
+
+- `router.delete("/:username/:sns",` 
+  - postman에서 url에 parameters인 username과 sns에 해당하는 value값을 요청하면 데이터 전송됨
+  - params 순서 중요
+
+
+
+> ### CRUD API
+
+```javascript
+// DB 역할 Object
+// Read 전체 데이터 조회 : GET
+
+// Create 데이터 생성
+// Method : POST
+// Header : {context-type : application/json} => 자동 생성됨
+
+// Request
+// Body : {
+//   fruit : 과일 이름 하나
+// }
+// 해당 과일 이름을 비구조화 할당으로 가져와서 fruitArr에 추가
+// 그리고 추가한 후에 알파벳 순으로 정렬
+// 만약 중복된 과일이 존재한다면, status code 500 에러 발생
+
+// Response
+// type : json
+// {
+// 		message : "과일 추가가 완료 되었습니다."
+// }
+
+// Fail
+// status 500 Code
+// {
+//    message : '중복된 과일이 존재합니다.'
+// }
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+`<scratch section>`
+
+`use`: "모든 methods를 허용하겠다"
+
+
+
+
+
