@@ -1,6 +1,6 @@
 # TODAY I LEARNED
 
-<hr />
+
 
 ## SSAC
 
@@ -8,7 +8,7 @@
 
 <br />
 
-### 1. Web Client
+### 1. Front-End
 
 - HTML -
 - CSS -
@@ -17,7 +17,7 @@
 
 <br />
 
-### 2. Web Server
+### 2. Back-End
 
 - Node.js -
 
