@@ -280,8 +280,9 @@ for (let i = 0; i < moduleArr.length; i++) {
     2. number값을 받았을 경우 홀수면 '홀수입니다.', 짝수면 '짝수입니다' + 2의 제곱형태
   - main
     - const moduleArr = [1, 2, apple, ssac, 5]
-
-
+  - solution
+    1. `new Set()` 활용
+       - unique한 속성이 들어가는 객체
 
 
 
@@ -431,6 +432,78 @@ for (let i = 0; i < moduleArr.length; i++) {
 
 
 
+## 09.08.21
+
+> ***review***
+
+- 모듈: 특정한 기능을 하는 함수나 변수들의 집합
+- HTTP: TCP와 UDP, IP 프로토콜 사용, 연결 상태를 유지하지 않는다.
+  -  Request Message
+    - Status Line - METHOD: 통신 메소드, URL: 요청할 url 주소, VERSION: HTTP 버전
+      - HTTP Method: GET - 조회, POST - 생성, PUT - 수정,  DELETE - 삭제
+    - Header - Content-Type, Content-Length, Set-Cookie, Token 등이 들어감
+    - A blank line
+    - Body - 데이터가  html, json, xml, form-data 등의 형식으로 들어감
+  - Response
+
+
+
+
+
+> ***New Project***
+
+- 프로젝트 생성: `express --view=ejs projectName`
+- 패키지 확인 및 다운: package.json 파일 확인 후 `npm install`
+- nodemon으로 서버 실행: `nodemon ./bin/www` -> nodemon: 
+- params는 되도록 맨 밑에 작성. 코드는 위에서부터 읽어지고 id에는 무슨 값이든 다 들어가기 때문
+
+
+
+> ***req.methods***
+
+- url 접근 (보안 취약) => GET, DELETE methods에 많이 쓰임
+  - `req.params`: `/:id` => `const {id} = req.params`
+    - DB index로 주로 사용
+  - `req,query`: `/?name=lee` => `const {name} = req.query`
+    - string값을 보낼 때 주로 사용
+- 보안(개인정보) => POST, PUT methods에 많이 쓰임
+  - `req.body`: `const { keys } = req.body`
+
+
+
+> ***유저 생성, 조회, 수정***
+
+indexing, 배열 삭제, 
+
+- `findIndex(a, b)`
+- 배열 삭제 => `.splice(index, ea)`
+  - `delete`와 `splice`차이
+    - splice: 해당 인덱스 삭제하고 길이 줄여줌.
+    - delete: 해당 인덱스를 삭제하는데 공간은 남겨둠, 길이는 그대로 => 배열보다는 object의 property 삭제할 때 사용
+- 다수의 유저 생성을 한번에 한다면? => 
+
+
+
+> ***REST API***
+
+
+
+- URI vs URL
+  - URI: Uniform Resource Identifier
+    - 통합 자원 식별자 => 자원을 식별할 수 있는 문자열
+    - 하위개념으로 URL, URN
+  - URL: Uniform Resource Loctor
+    - 통합 자원 지시자
+- API: Application Programming Interface
+  - 서버 애플리케이션의 기능을 사용하기 위한 방법/수단
+  - 구현 방식을 알지 못해도 서비스가 서로 통신 가능
+  - 리소스에 대한 액세스 권한을 제공하고 보안과 제어를 유지
+  - URI는 서버 설계 도면, API는 서버 사용 설명서
+- REST: Representational State Transfer
+  - 네트워크 기반의 아키텍쳐
+  - REST 원리를 따르는 시스템 => RESTful
+- "RESTful 하다"
+  - https://meetup.toast.com/posts/92 참고
 
 
 
@@ -438,6 +511,13 @@ for (let i = 0; i < moduleArr.length; i++) {
 
 
 
+> ***흐름제어***
+
+- **"Promise"**, **"Async"** => Callback Hell (중첩 콜백) 해소
+- **Promises**
+  - 비동기 작업을 순차적으로 실행하거나, 병렬로 진행
+  - 내부적 예외처리 구조 탄탄하여 오류 처리 가시적으로 관리 가능
+  - 
 
 
 
