@@ -513,17 +513,87 @@ indexing, 배열 삭제,
 
 > ***흐름제어***
 
+비동기 작업 => 어떤 작업이 언제 완료될 지 모름 => call back method가 중첩될 수 밖에 없음 =>  Call Back Hell: **Node.js의 딜레마**
+
+비동기적인 흐름에서 동기적인 흐름으로 바꾸고 싶을 때:  **"promise"**, **"async-await"** 사용
+
 - **"Promise"**, **"Async"** => Callback Hell (중첩 콜백) 해소
 - **Promises**
   - 비동기 작업을 순차적으로 실행하거나, 병렬로 진행
   - 내부적 예외처리 구조 탄탄하여 오류 처리 가시적으로 관리 가능
-  - 
+- resolve -> then
+- reject -> catch -> 에러 관리
 
 
 
 
 
+## 09.09.21
 
+> ***review***
+
+body, params, query
+
+HTTP 통신은 정보를 저장하지 않는다. => cookies / local storage (WEB)에 저장 - 자동로그인
+
+`npm install` : 노드 모듈 패키지 설치 (dependencies)
+
+**REST API**
+
+- Uniform Interface: HTTP 표준에만 따른다면, 어떠한 기술이든 사용 가능한 인터페이스 스타일
+- Stateless: HTTP Session(서버에 저장)과 같은 컨텍스트 저장소에 상태 정보를 저장하지 않음. API 서버는 들어오는 요청만을 들어오는 메시지로만 처리하면 되며, 세션과 같은 정보를 신경 쓸 필요 없음
+- Layered System: 대상 서버에 직접 연결되었는지, 또는 중간 서버를 통해 연결되었는지를 알 수 없음. 중간 서버는 로드 밸런싱 기능이나 공유 캐시 기능을 제공함
+- Self-descriptiveness
+- Client-Server 구조
+- Cacheable
+
+
+
+**API 문서(명세서)** => swagger, git wiki 추천
+
+
+
+
+
+> ***서버의 꽃: "배포"***
+
+**AWS**
+
+- on-demand 방식 - 종량 과금제
+- **EC2**: 컴퓨팅 파워를 클라우드에서 제공하는 웹 서비스
+- 아무나 들어올 수 있도록 적절한 포트 번호 개방
+- elastic IP address 할당 받아서 인스턴스랑 연결
+  - 연결 해제하고 릴리즈해야 과금 안됨!!!!
+- 인스턴스 연결
+- 터미널
+  - `cd rootFolder` - `cd keyFolder`
+  - 인스턴스 연결 페이지에서 키를 공개적으로 볼 수 없도록 하는 명령어 실행: `chmod 400 keyName`
+  - 퍼블릭 DNS을(를) 사용하여 인스턴스에 연결 항목에 example) 긁어서 명령
+- 파일질라 - 파일관리자 열고
+  - Protocol: SFTP
+  - Host: AWS에서 탄력적 IP 복붙
+  - Logon Type: Key file
+  - User: ubuntu
+  - Key file: pem flie 위치
+
+
+
+터미널을 종료하면 서버는 종료됨 => Process Manager (PM2)로 서버 가동
+
+- **pm2** - https://velog.io/@hojin9622/PM2-%EC%A0%95%EB%A6%AC 참고
+  - 원활한 서버 운영을 위한 패키지
+  - npm start로 서버 작동 시 일정시간 지날 시 프로세스 자동 중지
+  - 항상 서버를 작동시켜놓고 로그를 수집하기 위해 pm2 사용
+  - 에러 발생시 자동 restart 기능
+
+
+
+
+
+**서버 종료** (과금 방지)
+
+- 탄력적 IP - 연결 해제 -> 릴리즈
+- 인스턴스 종료
 
 
 
@@ -546,6 +616,18 @@ indexing, 배열 삭제,
 `<scratch section>`
 
 `use`: "모든 methods를 허용하겠다"
+
+Terminal customizing: iTerm2 - https://ooeunz.tistory.com/21
+
+redirection port number 80 to port number 3000: `sudo iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000`
+
+`sudo apt-get update`
+
+`sudo apt-get install nodejs`
+
+`sudo apt-get install npm`
+
+`sudo iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000`
 
 
 
