@@ -599,6 +599,41 @@ HTTP 통신은 정보를 저장하지 않는다. => cookies / local storage (WEB
 
 
 
+## 09.10.21
+
+> ***Review***
+
+
+
+> ***react <-> node***
+
+https://donghunee.github.io/study/2019/10/21/react/ : "axios" vs "fetch" => 실질적인 통신을 가능케 하는 통신을 위한 패키지
+
+- promise 기반
+- fetch: body값
+- axios: data(object)값, fetch보다 기능이 많음, 코드 작성 쉬움
+
+
+
+CORS: CORS Origin Error
+
+- 3001번에서 3000번으로 요청 => 에러 : 보안상의 이유, 동일한 베이스에서 요청해야함
+- 서버작업한 폴더 app.js => 터미널에서 `npm install cors`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
