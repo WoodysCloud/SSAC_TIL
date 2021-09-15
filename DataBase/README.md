@@ -125,3 +125,95 @@ INSERT(C), SELECT(R), UPDATE(U), DELETE(D)
 
 
 
+## 09.15.21
+
+***review***
+
+> ***MySQL***
+
+Workbench - GUI
+
+
+
+> ***exercise*** - node.js 연동
+
+1. express 프로젝트 생성 => `express --view=ejs projectName`
+2. npm install => express project folder로 change directory 후 `npm install` + `npm install myql2`
+3. DB table 생성
+4. server - DB 연결 => config, modules folder 생성
+
+
+
+=> "Controller" 기능구현 파일 따로 생성
+
+
+
+> ***exercise*** - multer
+
+multer setting 
+
+1. awsConfig.json 파일 config 폴더에 
+2. awsUpload.js 파일 modules 폴더에
+3. `npm install multer multer3 aws-sdk`
+
+
+
+> ***img upload on S3***
+
+1. upload 미들웨어
+2. 포스트맨에서
+   - Headers: Content-Type => multipart/form-data
+   - Body: form-data -> key: img - file
+3. `console.log`로 `req.file`을 보면 정보 나옴 
+4. db 연동 
+   - Headers: Content-Type => application/json
+   - Body: raw
+
+
+
+> ***react***
+
+- import BrowserRouter: 페이지 새로고침 없이 주소 변경해주는 모듈
+
+- `<Router path="/경로" components={컴포넌트} />`
+
+- `exact={true}`: 해당 라우트만 렌더링
+
+- Styled Component
+
+- html `<a>`태그 대신 `<Link>`태그 사용
+
+  - `<a>`태그 사용 시, reload
+  - `<Link>`태그로 SPA
+
+- component, container 분리
+
+  - component: css, view
+  - containter: 기능구현
+
+  => pages폴더에서 components, containers 불러와서 배치
+
+
+
+- `yarn add axios` => 서버 통신
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+> ***reference***
+
+https://kyounghwan01.github.io/blog/React/container-presenter-dessign-pattern/#gist-%E1%84%8B%E1%85%A8%E1%84%8C%E1%85%A6
+
