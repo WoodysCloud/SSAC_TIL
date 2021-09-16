@@ -135,6 +135,8 @@ Workbench - GUI
 
 
 
+***exercise***
+
 > ***exercise*** - node.js 연동
 
 1. express 프로젝트 생성 => `express --view=ejs projectName`
@@ -196,6 +198,65 @@ multer setting
 
 
 - `yarn add axios` => 서버 통신
+
+
+
+
+
+## 09.16.21
+
+***react - server - database***
+
+- cors error 발생시 (npm install cors를 했음에도 불구하고)
+
+- aws s3 권한 cors에서
+
+  ```json
+  [
+      {
+          "AllowedHeaders": [
+              "*"
+          ],
+          "AllowedMethods": [
+              "HEAD",
+              "GET",
+              "PUT",
+              "POST",
+              "DELETE"
+          ],
+          "AllowedOrigins": [
+              "http://localhost"
+          ],
+          "ExposeHeaders": [
+              "ETag",
+              "x-amz-meta-custom-header"
+          ]
+      }
+  ]
+  ```
+
+  
+
+>  ***redirection***
+
+upload 제출 완료하면  Home화면으로
+
+
+
+
+
+***RDB***
+
+관계형 데이터베이스
+
+> ***RDB***
+
+- membership table 있는 곳에 tables 2개(comment, user) 새로 생성
+- 참조당하는 곳: primary, 참조하는 곳: foreign
+- on update, on delete - CASCADE
+  - 참조하는곳(primary, )의 데이터가 바뀌면 참조당하는곳(foreign)도 따라서 변경/삭제
+
+
 
 
 
