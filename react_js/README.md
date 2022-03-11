@@ -186,7 +186,7 @@
 
 ## 09.02.21
 
-*** VS Code extenstion 설치***
+***VS Code extenstion 설치***
 
 > - syntax error -> ESlint
 > - 코드모양 -> Prettier
